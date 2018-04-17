@@ -40,3 +40,17 @@ def vote(request, question_id):
         selected_choice.votes += 1
         selected_choice.save()
         return redirect(reverse("poll:results", kwargs={"pk": question_id, }))
+
+def homepage(request):
+    return render(request, "index.html")
+
+def search_box(request):
+    return render(request, "searchbox.html", {"test": "test"})
+
+
+def vertical_timeline(request):
+    return render(request, "vertical_timeline.html")
+
+
+def btn_down(request):
+    return render(request, "btn_down.html")

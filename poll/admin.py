@@ -3,7 +3,3 @@ from . import models
 # Register your models here.
 
 admin.site.register(models.Question)
-
-"test different branch"
-
-"i write this in dev branch . "

@@ -159,7 +159,7 @@
                         <li class="nav-label">Home</li>
                         -->
                         <li>
-                            <a class="has-arrow  " href="#" aria-expanded="false">
+                            <a class="has-arrow" href="#" aria-expanded="false">
                                 <i class="fa fa-tachometer"></i>
                                 <span class="hide-menu">查看网站主页
                                     <!--
@@ -180,10 +180,11 @@
                         <!--
                         <li class="nav-label">Apps</li>
                         -->
-                        <li> <a class="has-arrow  " href="#" aria-expanded="false">
-                            <i class="fa fa-envelope"></i>
-                            <span class="hide-menu">查看产品信息</span>
-                        </a>
+                        <li>
+                            <a data-pjax class="has-arrow  " href="{% url 'adminurl:productinfo' %}" aria-expanded="false">
+                                <i class="fa fa-envelope"></i>
+                                <span class="hide-menu">查看产品信息</span>
+                            </a>
                             <!--
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="email-compose.html">Compose</a></li>
@@ -308,10 +309,11 @@
                         <!--
                         <li class="nav-label">Layout</li>
                         -->
-                        <li> <a class="has-arrow  " href="#" aria-expanded="false">
-                            <i class="fa fa-columns"></i>
-                            <span class="hide-menu">系统设置</span>
-                        </a>
+                        <li>
+                            <a class="has-arrow  " href="#" aria-expanded="false">
+                                <i class="fa fa-columns"></i>
+                                <span class="hide-menu">系统设置</span>
+                            </a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="layout-blank.html">主页内容设置</a></li>
                                 <li><a href="layout-boxed.html">搜索结果内容设置</a></li>
@@ -332,9 +334,9 @@
         <!-- End Left Sidebar  -->
 
 
-
         <!-- Page wrapper  -->
-        <div class="page-wrapper">
+        {% block rightside-page-content %}
+        <div class="page-wrapper" id="rightside-page-wrapper">
             <!-- Bread crumb(右侧最上面的标题栏) -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
@@ -406,7 +408,10 @@
             <footer class="footer"> © 2018 All rights reserved. Template designed by <a href="https://colorlib.com">Colorlib</a></footer>
             <!-- End footer -->
         </div>
+        {% endblock %}
         <!-- End Page wrapper  -->
+
+
     </div>
     <!-- End Wrapper -->
     <!-- All Jquery -->
@@ -445,6 +450,12 @@
     <!-- scripit init-->
 
     <script src="/static/polladmin/js/custom.min.js"></script>
+    <script src="/static/js/jquery.pjax.js"></script>
+    <script>
+        $(function () {
+           $(document).pjax('a[data-pjax]', '#rightside-page-wrapper', {fragment: 'rightside-page-wrapper'});
+        });
+    </script>
 
 </body>
 

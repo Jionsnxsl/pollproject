@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+</head>
+<body>
+
+    <div>
+        <a data-pjax href="{% url 'adminurl:testpagechangeone' %}"> itemone</a>
+        <a data-pjax href="{% url 'adminurl:testpagechangetwo' %}"> itemtwo</a>
+    </div>
+    <div id="container">
+    </div>
+    <script src="/static/js/vendor/jquery-2.2.4.min.js"></script>
+    <script src="/static/js/jquery.pjax.js"></script>
+    <script>
+        $(document).pjax('a[data-pjax]', '#container', {fragment: "#containers"});
+
+{#        $(function () {#}
+{#            $("p[data-pjax]").click(function () {#}
+{#                var content = $(this).text();#}
+{#                console.log(content);#}
+{#                if(content == "itemone"){#}
+{#                    $.pjax({url: "{% url 'adminurl:testpagechangeone' %}", container: '#container', fragment: "#container"})#}
+{#                }else {#}
+{#                    $.pjax({url: "{% url 'adminurl:testpagechangetwo' %}", container: '#container', fragment: "#container"})#}
+{#                }#}
+{#            });#}
+{#        });#}
+    </script>
+</body>
+</html>

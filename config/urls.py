@@ -17,8 +17,10 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from poll import urls
 from polladmin import urls as admin_url
+from users import urls as user_url
 
 urlpatterns = [
     url(r'^admin/', include(admin_url, namespace="adminurl")),
     url(r'^poll/', include(urls, namespace="poll")),
+    url(r'^users/', include(user_url, namespace="userurl")),
 ]

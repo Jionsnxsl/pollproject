@@ -42,6 +42,8 @@ def vote(request, question_id):
         return redirect(reverse("poll:results", kwargs={"pk": question_id, }))
 
 def homepage(request):
+    if not request.user.is_authenticated():
+        return HttpResponse("not login")
     return render(request, "index.html")
 
 def search_box(request):

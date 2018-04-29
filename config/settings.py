@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'poll',
     'polladmin',
+    'users',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -52,7 +53,26 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.security.SecurityMiddleware',
 )
 
+# AUTHENTICATION_BACKENDS = (
+#     'django.contrib.auth.backends.ModelBackend',
+#     'users.BackendDemo.MyBackend',
+# )
+
 ROOT_URLCONF = 'config.urls'
+
+
+AUTH_USER_MODEL = 'users.GrouperUser'
+
+# login_required 会用到这个URL，重定向到登录页面
+LOGIN_URL = '/users/login/'
+
+# 默认登录成功后进入的页面
+LOGIN_REDIRECT_URL = '/admin/'
+
+
+# 退出登录后导向的页面
+LOGOUT_URL = '/users/login/'
+
 
 TEMPLATES = [
     {

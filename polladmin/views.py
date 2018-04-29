@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.template.response import TemplateResponse
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
-
+# @login_required()
 def IndexView(request):
+    print(request.user.is_authenticated())
     return render(request, "polladmin/index.html")
 
 

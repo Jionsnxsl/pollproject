@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/polladmin/images/favicon.png">
+    <title>石斑鱼后台管理系统</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="/static/polladmin/css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/static/polladmin/css/lib/data-table/bootstrap-table.css" rel="stylesheet">
+
+</head>
+
+<body class="fix-header fix-sidebar">
+    <!-- Main wrapper  -->
+    <div id="main-wrapper">
+        <!-- Page wrapper  -->
+        {% block rightside-page-content %}
+        <div class="page-wrapper" id="rightside-page-wrapper">
+            <!-- Container fluid  -->
+            <div class="container-fluid">
+                <!-- Start Page Content -->
+
+                 <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Data Table</h4>
+                                <h6 class="card-subtitle">Data table example</h6>
+                                <div class="table-responsive m-t-40">
+                                    <div id="toolbar">
+                                      <button id="add-user" class="btn btn-danger">
+                                        <a class="fa fa-remove" href="#"></a> 添加
+                                      </button>
+                                      <button id="remove" class="btn btn-danger" disabled>
+                                        <i class="fa fa-remove"></i> 删除
+                                      </button>
+                                    </div>
+                                    <table data-toggle="table"
+                                           data-toolbar="#toolbar"
+                                           data-search="true"
+                                           data-minimum-count-columns="2"
+                                           data-pagination="true"
+                                           data-id-field="username"
+                                           data-click-to-select="true"
+                                           data-page-list="[10, 25, 50, 100]"
+                                           data-side-pagination="server"
+                                           data-height="100%"
+                                           data-url="{% url 'adminurl:userInfo' %}">
+
+                                        <thead>
+                                            <tr>
+                                                <th data-field="state" data-checkbox="true"></th>
+                                                <th data-field="username" data-sortable="true" data-align="center">用户名</th>
+                                                <th data-field="employeeID" data-sortable="true"  data-align="center">员工号</th>
+                                                <th data-field="is_staff" data-align="center">是否为普通员工</th>
+                                                <th data-field="is_superuser" data-align="center">是否为管理员</th>
+                                                <th data-field="operate" data-align="center">操作</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- End PAge Content -->
+            </div>
+            <!-- End Container fluid  -->
+            <!-- footer -->
+            <footer class="footer"> © 2018 All rights reserved. Template designed by <a href="https://colorlib.com">Colorlib</a></footer>
+            <!-- End footer -->
+        </div>
+        {% endblock %}
+        <!-- End Page wrapper  -->
+
+
+    </div>
+    <!-- End Wrapper -->
+    <!-- All Jquery -->
+    <script src="/static/polladmin/js/lib/jquery/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="/static/polladmin/js/lib/bootstrap/js/popper.min.js"></script>
+    <script src="/static/polladmin/js/lib/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="/static/polladmin/js/lib/datatables/bootstrap-table.js"></script>
+    <script src="/static/polladmin/js/bootstrap-table-zh-CN.js"></script>
+</body>
+
+</html>

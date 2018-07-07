@@ -25,7 +25,7 @@ SECRET_KEY = '6zr#%bv#e-e1_!z=+68uod7pjn+mou=i@wd!m-557u8*(7dztv'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*', '10.30.176.177']
 
 
 # Application definition
@@ -126,3 +126,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media').replace('\\', '/')  # media即为图片上传的根路径
+MEDIA_URL = '/media/'

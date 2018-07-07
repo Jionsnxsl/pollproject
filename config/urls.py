@@ -19,8 +19,12 @@ from poll import urls
 from polladmin import urls as admin_url
 from users import urls as user_url
 
+
+from django.conf.urls.static import static
+from django.conf import settings
+
 urlpatterns = [
     url(r'^admin/', include(admin_url, namespace="adminurl")),
     url(r'^poll/', include(urls, namespace="poll")),
     url(r'^users/', include(user_url, namespace="userurl")),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

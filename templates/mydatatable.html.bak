@@ -21,6 +21,8 @@
     <link href="/static/polladmin/css/lib/owl.theme.default.min.css" rel="stylesheet" />
     <link href="/static/polladmin/css/helper.css" rel="stylesheet">
     <link href="/static/polladmin/css/style.css" rel="stylesheet">
+    <link href="/static/polladmin/css/lib/data-table/bootstrap-table.css" rel="stylesheet">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
     <!--[if lt IE 9]>
@@ -202,8 +204,8 @@
                                 <span class="hide-menu">用户管理</span>
                             </a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="{% url 'adminurl:productinfo' %}">用户信息查看</a></li>
-                                <li><a href="{% url 'adminurl:productinfo' %}">添加用户</a></li>
+                                <li><a href="chart-flot.html">用户信息查看</a></li>
+                                <li><a href="chart-morris.html">添加用户</a></li>
                             </ul>
                             <!--
                             <ul aria-expanded="false" class="collapse">
@@ -235,8 +237,8 @@
                                 </span>
                             </a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="{% url 'adminurl:productinfo' %}">鱼池信息查看</a></li>
-                                <li><a href="{% url 'adminurl:productinfo' %}">添加鱼池</a></li>
+                                <li><a href="chart-flot.html">鱼池信息查看</a></li>
+                                <li><a href="chart-morris.html">添加鱼池</a></li>
                             </ul>
                             <!--
                             <ul aria-expanded="false" class="collapse">
@@ -299,8 +301,8 @@
                                 </span>
                             </a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="{% url 'adminurl:productinfo' %}">未回复反馈</a></li>
-                                <li><a href="{% url 'adminurl:productinfo' %}">已回复反馈</a></li>
+                                <li><a href="table-bootstrap.html">未回复反馈</a></li>
+                                <li><a href="table-datatable.html">已回复反馈</a></li>
                             </ul>
                         </li>
                         <!-- 反馈管理(END) -->
@@ -315,8 +317,8 @@
                                 <span class="hide-menu">系统设置</span>
                             </a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="{% url 'adminurl:productinfo' %}">主页内容设置</a></li>
-                                <li><a href="{% url 'adminurl:productinfo' %}">搜索结果内容设置</a></li>
+                                <li><a href="layout-blank.html">主页内容设置</a></li>
+                                <li><a href="layout-boxed.html">搜索结果内容设置</a></li>
                                 <!--
                                 <li><a href="layout-fix-header.html">Fix Header</a></li>
                                 <li><a href="layout-fix-sidebar.html">Fix Sidebar</a></li>
@@ -340,11 +342,11 @@
             <!-- Bread crumb(右侧最上面的标题栏) -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-primary">产品信息</h3> </div>
+                    <h3 class="text-primary">用户信息查看</h3> </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">主页</a></li>
-                        <li class="breadcrumb-item active">产品信息查看(访问路径预留)</li>
+                        <li class="breadcrumb-item active">用户信息查看</li>
                     </ol>
                 </div>
             </div>
@@ -354,51 +356,35 @@
             <div class="container-fluid">
                 <!-- Start Page Content -->
 
-                <div class="row bg-white m-l-0 m-r-0 box-shadow ">
-
-                    <!-- column -->
-                    <div class="col-lg-8">
+                 <div class="row">
+                    <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Extra Area Chart</h4>
-                                <div id="extra-area-chart"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- column -->
-
-                    <!-- column -->
-                    <div class="col-lg-4">
-                        <div class="card">
-                            <div class="card-body browser">
-                                <p class="f-w-600">iMacs <span class="pull-right">85%</span></p>
-                                <div class="progress ">
-                                    <div role="progressbar" style="width: 85%; height:8px;" class="progress-bar bg-danger wow animated progress-animated"> <span class="sr-only">60% Complete</span> </div>
-                                </div>
-
-                                <p class="m-t-30 f-w-600">iBooks<span class="pull-right">90%</span></p>
-                                <div class="progress">
-                                    <div role="progressbar" style="width: 90%; height:8px;" class="progress-bar bg-info wow animated progress-animated"> <span class="sr-only">60% Complete</span> </div>
-                                </div>
-
-                                <p class="m-t-30 f-w-600">iPhone<span class="pull-right">65%</span></p>
-                                <div class="progress">
-                                    <div role="progressbar" style="width: 65%; height:8px;" class="progress-bar bg-success wow animated progress-animated"> <span class="sr-only">60% Complete</span> </div>
-                                </div>
-
-                                <p class="m-t-30 f-w-600">Samsung<span class="pull-right">65%</span></p>
-                                <div class="progress">
-                                    <div role="progressbar" style="width: 65%; height:8px;" class="progress-bar bg-warning wow animated progress-animated"> <span class="sr-only">60% Complete</span> </div>
-                                </div>
-
-								<p class="m-t-30 f-w-600">android<span class="pull-right">65%</span></p>
-                                <div class="progress m-b-30">
-                                    <div role="progressbar" style="width: 65%; height:8px;" class="progress-bar bg-success wow animated progress-animated"> <span class="sr-only">60% Complete</span> </div>
+                                <h4 class="card-title">Data Table</h4>
+                                <h6 class="card-subtitle">Data table example</h6>
+                                <div class="table-responsive m-t-40">
+                                    <div id="toolbar">
+                                      <button id="add-user" class="btn btn-danger">
+                                        <a class="fa fa-remove" href="#"></a> 添加
+                                      </button>
+                                      <button id="remove" class="btn btn-danger" disabled>
+                                        <i class="fa fa-remove"></i> 删除
+                                      </button>
+                                    </div>
+                                    <table id="userinfo-table"
+                                           data-toolbar="#toolbar"
+                                           data-search="true"
+                                           data-minimum-count-columns="2"
+                                           data-pagination="true"
+                                           data-id-field="username"
+                                           data-page-list="[10, 25, 50, 100]"
+                                           data-side-pagination="server"
+                                           data-url="{% url 'adminurl:userInfo' %}">
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- column -->
                 </div>
 
                 <!-- End PAge Content -->
@@ -451,15 +437,90 @@
 
     <script src="/static/polladmin/js/custom.min.js"></script>
     <script src="/static/js/jquery.pjax.js"></script>
-    {% block custom-script %}
 
+
+
+    {% block custom-script %}
+    <script src="/static/polladmin/js/lib/datatables/bootstrap-table.js"></script>
+    <script src="/static/polladmin/js/bootstrap-table-zh-CN.js"></script>
     {% endblock %}
     <script>
         $(function () {
-           $(document).pjax('a[data-pjax]', '#rightside-page-wrapper', {fragment: '#rightside-page-wrapper'});
+            $(document).pjax('a[data-pjax]', '#rightside-page-wrapper', {fragment: '#rightside-page-wrapper'});
         });
-    </script>
 
+        const $table = $('#userinfo-table');
+        const $remove = $('#remove');
+        let selections = [];
+
+        function initTable() {
+            $table.bootstrapTable({
+                height: getHeight(),
+                columns: [{
+                      field: 'state',
+                      checkbox: true,
+                      align: 'center',
+                    }, {
+                        title: '用户名',
+                        field: 'username',
+                        align: 'center',
+                        sortable: true
+                    }, {
+                            field: 'employeeID',
+                            title: '员工号',
+                            sortable: true,
+                            editable: true,
+                            align: 'center'
+                        }, {
+                        field: 'is_staff',
+                        title: '是否为普通员工',
+                        align: 'center',
+                    }, {
+                        field: 'is_superuser',
+                        title: '是否为管理员',
+                        align: 'center',
+                    },{
+
+                }]
+            });
+            // sometimes footer render error.
+            setTimeout(() => {
+                $table.bootstrapTable('resetView');
+            }, 200);
+            $table.on('check.bs.table uncheck.bs.table ' +
+                'check-all.bs.table uncheck-all.bs.table', () => {
+                $remove.prop('disabled', !$table.bootstrapTable('getSelections').length);
+
+                // save your data, here just save the current page
+                selections = getIdSelections();
+                // push or splice the selections if you want to save all data selections
+            });
+            $remove.click(() => {
+                const users = getIdSelections();
+                $table.bootstrapTable('remove', {
+                    field: 'username',
+                    values: users
+                });
+                $remove.prop('disabled', true);
+            });
+            $(window).resize(() => {
+                $table.bootstrapTable('resetView', {
+                    height: getHeight()
+                });
+            });
+        }
+        function getIdSelections() {
+            return $.map($table.bootstrapTable('getSelections'), ({username}) => username);
+        }
+        function getHeight() {
+            return $(window).height() - $('h1').outerHeight(true);
+        }
+
+        $(() => {
+            initTable();
+        })
+
+    </script>
 </body>
 
 </html>

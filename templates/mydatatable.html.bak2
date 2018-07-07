@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/polladmin/images/favicon.png">
+    <title>石斑鱼后台管理系统</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="/static/polladmin/css/lib/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/static/polladmin/css/lib/data-table/bootstrap-table.css" rel="stylesheet">
+
+</head>
+
+<body class="fix-header fix-sidebar">
+    <!-- Main wrapper  -->
+    <div id="main-wrapper">
+        <!-- Page wrapper  -->
+        {% block rightside-page-content %}
+        <div class="page-wrapper" id="rightside-page-wrapper">
+            <!-- Container fluid  -->
+            <div class="container-fluid">
+                <!-- Start Page Content -->
+
+                 <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Data Table</h4>
+                                <h6 class="card-subtitle">Data table example</h6>
+                                <div class="table-responsive m-t-40">
+                                    <div id="toolbar">
+                                      <button id="add-user" class="btn btn-danger">
+                                        <a class="fa fa-remove" href="#"></a> 添加
+                                      </button>
+                                      <button id="remove" class="btn btn-danger" disabled>
+                                        <i class="fa fa-remove"></i> 删除
+                                      </button>
+                                    </div>
+                                    <table id="userinfo-table"
+                                           data-toolbar="#toolbar"
+                                           data-search="true"
+                                           data-minimum-count-columns="2"
+                                           data-pagination="true"
+                                           data-id-field="username"
+                                           data-click-to-select="true"
+                                           data-page-list="[10, 25, 50, 100]"
+                                           data-side-pagination="server"
+                                           data-url="{% url 'adminurl:userInfo' %}">
+
+                                        
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- End PAge Content -->
+            </div>
+            <!-- End Container fluid  -->
+            <!-- footer -->
+            <footer class="footer"> © 2018 All rights reserved. Template designed by <a href="https://colorlib.com">Colorlib</a></footer>
+            <!-- End footer -->
+        </div>
+        {% endblock %}
+        <!-- End Page wrapper  -->
+
+
+    </div>
+    <!-- End Wrapper -->
+    <!-- All Jquery -->
+    <script src="/static/polladmin/js/lib/jquery/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="/static/polladmin/js/lib/bootstrap/js/popper.min.js"></script>
+    <script src="/static/polladmin/js/lib/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="/static/polladmin/js/lib/datatables/bootstrap-table.js"></script>
+    <script src="/static/polladmin/js/bootstrap-table-zh-CN.js"></script>
+    <script>
+
+        var operateFormatter = function (value, row, index) {//赋予的参数
+            console.log(row.username, row.employeeID, index);
+            return '<button class="btn btn-info btn-sm" type="button"><a class="fa fa-paste"></a> 详情</button>'
+        };
+
+        const $table = $('#userinfo-table');
+        const $remove = $('#remove');
+        let selections = [];
+
+        function initTable() {
+            $table.bootstrapTable({
+                height: getHeight(),
+                columns: [{
+                      field: 'state',
+                      checkbox: true,
+                      align: 'center',
+                    }, {
+                        title: '用户名',
+                        field: 'username',
+                        align: 'center',
+                        sortable: true
+                    }, {
+                            field: 'employeeID',
+                            title: '员工号',
+                            sortable: true,
+                            editable: true,
+                            align: 'center'
+                        }, {
+                        field: 'is_staff',
+                        title: '是否为普通员工',
+                        align: 'center',
+                    }, {
+                        field: 'is_superuser',
+                        title: '是否为管理员',
+                        align: 'center',
+                    },{
+                    field: 'operate',
+                    title: '操作',
+                    align: 'center',
+                    formatter: operateFormatter
+                }]
+            });
+            // sometimes footer render error.
+            setTimeout(() => {
+                $table.bootstrapTable('resetView');
+            }, 200);
+            $table.on('check.bs.table uncheck.bs.table ' +
+                'check-all.bs.table uncheck-all.bs.table', () => {
+                $remove.prop('disabled', !$table.bootstrapTable('getSelections').length);
+
+                // save your data, here just save the current page
+                selections = getIdSelections();
+                // push or splice the selections if you want to save all data selections
+            });
+            $remove.click(() => {
+                const users = getIdSelections();
+                $table.bootstrapTable('remove', {
+                    field: 'username',
+                    values: users
+                });
+                $remove.prop('disabled', true);
+            });
+            $(window).resize(() => {
+                $table.bootstrapTable('resetView', {
+                    height: getHeight()
+                });
+            });
+        }
+        function getIdSelections() {
+            return $.map($table.bootstrapTable('getSelections'), ({username}) => username);
+        }
+        function getHeight() {
+            return $(window).height() - $('h1').outerHeight(true);
+        }
+
+        $(() => {
+            initTable();
+        })
+
+    </script>
+</body>
+
+</html>

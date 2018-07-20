@@ -77,7 +77,7 @@ def search_box(request):
 
 
 def vertical_timeline(request):
-    return render(request, "vertical_timeline.html")
+    return render(request, "search_result_demo.html")
 
 
 def btn_down(request):
@@ -117,7 +117,7 @@ def upload_image(request):
         }
         return render(request, "upload2.html", context)
 
-
+@csrf_exempt
 def show_img(request):
     # imgs = models.MyImage.objects.all()
     # context = {
@@ -125,3 +125,8 @@ def show_img(request):
     # }
     # return render(request, "showImg.html", context)
     return render(request, "upload3.html")
+
+
+def test_url(request):
+    print(request.body)
+    return HttpResponse("ok")

@@ -14,5 +14,6 @@ urlpatterns = [
     url(r'^generateqrcode/(?P<pid>\d+)$', views.GenerateQRCode, name="generateqrcode"),
     url(r'^uploadimg/$', views.upload_image, name="upload_image"),
     url(r'^showimg/$', views.show_img, name="show_img"),
+    url(r'^test/$', views.test_url, name="test_url"),
 ]
 
